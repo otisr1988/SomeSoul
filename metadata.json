@@ -1,0 +1,6 @@
+{
+  "name": "SomaSoul - Metaphysical Meaning Dictionary & Symptom Decoder",
+  "description": "Cross-platform metaphysical body dictionary and psychosomatic symptom decoder. Uncover the spiritual, emotional, chakra, and meridian causes of physical ailments with custom affirmations and somatic guidance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

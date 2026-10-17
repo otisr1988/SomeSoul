@@ -1,0 +1,115 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile document",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Unique identifier of the user",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address",
+          "maxLength": 256
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name of the user",
+          "maxLength": 128
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Avatar image URL",
+          "maxLength": 1024
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of account creation",
+          "maxLength": 64
+        }
+      },
+      "required": ["userId", "email"]
+    },
+    "SymptomEntry": {
+      "title": "SymptomEntry",
+      "description": "Saved symptom query and metaphysical decoding history",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique entry identifier",
+          "maxLength": 128
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner user ID",
+          "maxLength": 128
+        },
+        "symptomText": {
+          "type": "string",
+          "description": "Symptom description entered by user",
+          "maxLength": 1000
+        },
+        "primaryAilmentId": {
+          "type": "string",
+          "description": "ID of primary matched metaphysical ailment",
+          "maxLength": 128
+        },
+        "primaryAilmentName": {
+          "type": "string",
+          "description": "Name of primary matched metaphysical ailment",
+          "maxLength": 256
+        },
+        "dominantChakra": {
+          "type": "string",
+          "description": "Dominant chakra associated with symptoms",
+          "maxLength": 64
+        },
+        "bodySide": {
+          "type": "string",
+          "description": "Body side polarity (left, right, both)",
+          "maxLength": 32
+        },
+        "metaphysicalMeaning": {
+          "type": "string",
+          "description": "Core metaphysical explanation",
+          "maxLength": 2000
+        },
+        "emotionalRoot": {
+          "type": "string",
+          "description": "Underlying emotional or psychosomatic root cause",
+          "maxLength": 2000
+        },
+        "healingAffirmation": {
+          "type": "string",
+          "description": "Healing affirmation for the symptom",
+          "maxLength": 1000
+        },
+        "reflectionNotes": {
+          "type": "string",
+          "description": "Personal reflection or journal notes",
+          "maxLength": 4000
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp",
+          "maxLength": 64
+        }
+      },
+      "required": ["id", "userId", "symptomText", "primaryAilmentName", "healingAffirmation"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile document owned strictly by the authenticated user"
+    },
+    "/users/{userId}/symptomEntries/{entryId}": {
+      "schema": "SymptomEntry",
+      "description": "Historical symptom log and metaphysical reading for a specific user"
+    }
+  }
+}
